@@ -8,8 +8,9 @@ import pdb
 class TestPub(unittest.TestCase):
     def setUp(self):
 
-        self.customer1 = Customer('Duncan', 2000)
-        self.customer2 = Customer('Lucinda', 1000)
+        self.customer1 = Customer('Duncan', 2000, 12)
+        self.customer2 = Customer('Lucinda', 1000, 21)
+        self.customer3 = Customer('Dana', 5000, 18)
 
         drink1 = Drink("Guinness", 550)
         drink2 = Drink("Lager", 250)
@@ -30,13 +31,21 @@ class TestPub(unittest.TestCase):
         self.assertEqual(2000, self.pub.till)
 
     def test_add_cash_to_till(self):
-        # pdb.set_trace()
         self.pub.add_cash_to_till(self.drinks[0].price)
         self.assertEqual(2550, self.pub.till)
 
-    def test_can_sell_drink_to_customer(self):
+    def test_check_customer_age_pass(self):
+        answer = self.pub.check_customer_age(self.customer3)
+        self.assertEqual(True, answer)
 
-        self.customer1.remove_customer_cash(self.drinks[2].price)
-        self.pub.add_cash_to_till(self.drinks[2].price)
-        self.assertEqual(1850, self.customer1.wallet)
-        self.assertEqual(2150, self.pub.till)
+    def test_check_customer_age_pass_fail(self):
+        answer = self.pub.check_customer_age(self.customer1)
+        self.assertEqual(False, answer)
+
+    def test_serve_customer(self):
+
+        # self.assertEqual(False, self.pub.serve_customer(self.customer1))
+
+        # check customer age takes customer returns true or false depending on age.
+        # self.pub.add_cash_to_till(self.drinks[2].price)
+        #    self.assertEqual(3250, self.pub.till)

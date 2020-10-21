@@ -8,8 +8,8 @@ import pdb
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
-        self.customer1 = Customer('David', 1000)
-        self.customer2 = Customer('Lucy', 1500)
+        self.customer1 = Customer('David', 1000, 40)
+        self.customer2 = Customer('Lucy', 1500, 25)
 
         drink1 = Drink("Guinness", 650)
         drink2 = Drink("Lager", 350)
@@ -32,6 +32,8 @@ class TestCustomer(unittest.TestCase):
     def test_customer_can_buy_drink(self):
 
         self.customer1.remove_customer_cash(self.drinks[2].price)
-        self.pub.add_cash_to_till(self.drinks[2].price)
         self.assertEqual(750, self.customer1.wallet)
-        self.assertEqual(3250, self.pub.till)
+
+    # def test_can_buy_drink(self):
+
+        # can buy drink reduces wallet.
