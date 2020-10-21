@@ -6,11 +6,17 @@ from src.pub import Pub
 
 class TestPub(unittest.TestCase):
     def setUp(self):
-        self.drink1 = Drink('Red Kite Ale', 250)
-        self.drink2 = Drink("Gin  and tonic", 400)
 
-        drinks = [self.drink1, self.drink2]
-        self.pub = Pub("Alpaca Inn", drinks, 2000)
+        drink1 = Drink("Guinness", 550)
+        drink2 = Drink("Lager", 250)
+        drink3 = Drink("Wine", 150)
+
+        self.drinks = [drink1, drink2, drink3]
+
+        self.pub = Pub("Alpaca Inn", self.drinks, 2000)
 
     def test_pub_has_name(self):
         self.assertEqual("Alpaca Inn", self.pub.name)
+
+    def test_pub_has_drinks(self):
+        self.assertEqual(3, len(self.drinks))
