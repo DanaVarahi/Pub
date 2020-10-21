@@ -2,6 +2,7 @@ import unittest
 from src.drink import Drink
 from src.customer import Customer
 from src.pub import Pub
+import pdb
 
 
 class TestPub(unittest.TestCase):
@@ -20,3 +21,7 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_drinks(self):
         self.assertEqual(3, len(self.drinks))
+
+    def test_pub_has_till(self):
+
+        self.assertEqual(2000, self.pub.till)
