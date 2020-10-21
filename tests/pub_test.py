@@ -25,3 +25,8 @@ class TestPub(unittest.TestCase):
     def test_pub_has_till(self):
 
         self.assertEqual(2000, self.pub.till)
+
+    def test_add_cash_to_till(self):
+        # pdb.set_trace()
+        self.pub.add_cash_to_till(self.drinks[0].price)
+        self.assertEqual(2550, self.pub.till)
